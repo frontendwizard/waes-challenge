@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "name": "waes-challenge",
+  "alias": "frontendwizard-waes.now.sh",
+  "builds": [{ "src": "package.json", "use": "@now/static-build" }]
+}
