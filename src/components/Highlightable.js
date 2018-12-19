@@ -37,7 +37,6 @@ const Highlightable = ({
         (start <= highlight.range.start && end > highlight.range.end)
       )
         removeHighlight(highlight.id)
-      // dispatch({ type: "removeHighlight", payload: highlight.id })
     })
     // create new highlight
     addHighlight({
