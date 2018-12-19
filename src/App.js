@@ -1,27 +1,23 @@
 import React, { useReducer } from "react"
 import { reducer, initialState } from "./reducer"
-import Highlightable from "./Highlightable"
-import Selectors from "./Selectors"
-import Results from "./Results"
-import "./reset.css"
+// Components
+import Highlightable from "./components/Highlightable"
+import Selectors from "./components/Selectors"
+import Results from "./components/Results"
+// Global css
 import "./App.css"
+// Utils
+import { getStringDiffLength, findChangePosition } from "./utils"
 
 const App = () => {
   // redux store
   const [state, dispatch] = useReducer(reducer, initialState)
-  // find out where the change started
-  const findChangePosition = value => {
-    for (let i = 0; i < state.text.length; i++)
-      if (state.text.charAt(i) !== value.charAt(i)) return i
-    // happened at the end
-    return null
-  }
-  // find out how much has changed
-  const getDiffLength = value => value.length - state.text.length
   // if change is made in the middle of the text, update highlights to follow
   // up on the changes and update the text
   const onChange = text => {
-    const diffLength = getDiffLength(text)
+    // find out how a string has changed
+    const diffLength = getStringDiffLength(text, state.text)
+    // find out where the change started
     const changePosition = findChangePosition(text)
     if (changePosition !== null) {
       dispatch({
