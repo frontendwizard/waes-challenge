@@ -1,0 +1,8 @@
+.results {
+  padding: 32px;
+  list-style-type: none;
+}
+
+.results > * + * {
+  padding-top: 8px;
+}
