@@ -18,7 +18,7 @@ const App = () => {
     // find out how a string has changed
     const diffLength = getStringDiffLength(text, state.text)
     // find out where the change started
-    const changePosition = findChangePosition(text)
+    const changePosition = findChangePosition(text, state.text)
     if (changePosition !== null) {
       dispatch({
         type: "updateHighlights",
