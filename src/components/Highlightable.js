@@ -5,7 +5,6 @@ const Highlightable = ({
   highlights,
   addHighlight,
   removeHighlight,
-  nextId,
   color,
   text,
   onTextChange,
@@ -19,7 +18,8 @@ const Highlightable = ({
     highlightsRef.current.scrollTop = e.target.scrollTop
   }
   // listen to mouse up to get selections made with mouse
-  const onMouseUp = _e => {
+  const onMouseUp = e => {
+    e.persist()
     const start = textRef.current.selectionStart
     const end = textRef.current.selectionEnd
     // no selection made
@@ -42,35 +42,41 @@ const Highlightable = ({
     addHighlight({
       range: { start, end },
       color,
-      id: nextId,
     })
   }
   // parse highlights to add span tags between highlights for the
   // background div
-  const getHighlights = () =>
-    highlights.reduce((acc, selection, index) => {
-      const EXTRA_MARKUP_CHARS = 29 * index
-      return (
-        `${acc.slice(0, selection.range.start + EXTRA_MARKUP_CHARS)}` +
-        `<span class="${selection.color}">${acc.slice(
-          selection.range.start + EXTRA_MARKUP_CHARS,
-          selection.range.end + EXTRA_MARKUP_CHARS,
+  const getHighlights = () => {
+    let extraMarkupChars = 0
+    return highlights.reduce((acc, selection) => {
+      const highlight =
+        `${acc.slice(0, selection.range.start + extraMarkupChars)}` +
+        `<span class="${selection.color}" data-testid="highlight">${acc.slice(
+          selection.range.start + extraMarkupChars,
+          selection.range.end + extraMarkupChars,
         )}</span>` +
-        `${acc.slice(selection.range.end + EXTRA_MARKUP_CHARS)}`
-      )
+        `${acc.slice(selection.range.end + extraMarkupChars)}`
+      // `<span class="`. length
+      // + color.length
+      // + `" data-testid="highlight">`.lenth
+      // + `</span>`.length
+      extraMarkupChars += 13 + selection.color.length + 26 + 7
+      return highlight
     }, text)
+  }
   return (
     <div className="wrapper">
       <textarea
+        data-testid="highlightable-textarea"
         className="text"
         ref={textRef}
         value={text}
         onChange={e => onTextChange(e.target.value)}
         onMouseUp={onMouseUp}
-        onDoubleClick={() => {}}
         onScroll={onScroll}
       />
       <div
+        data-testid="highlightable-background"
         ref={highlightsRef}
         className="highlight text"
         dangerouslySetInnerHTML={{
