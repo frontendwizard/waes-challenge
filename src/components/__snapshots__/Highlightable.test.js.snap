@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Highlightable should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="wrapper"
+  >
+    <textarea
+      class="text"
+      data-testid="highlightable-textarea"
+    >
+      this is a test
+    </textarea>
+    <div
+      class="highlight text"
+      data-testid="highlightable-background"
+    >
+      this is a test
+    </div>
+  </div>
+</DocumentFragment>
+`;
