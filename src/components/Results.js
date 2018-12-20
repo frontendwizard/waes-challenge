@@ -4,8 +4,8 @@ import "./Results.css"
 const Results = ({ highlights, color, text }) => (
   <ul className="results">
     {highlights.filter(hg => hg.color === color).map(hg => (
-      <li key={hg.id} data-testid="highlight-result">
-        <span className={hg.color}>
+      <li key={hg.id}>
+        <span className={hg.color} data-testid="highlight-result">
           {text.slice(hg.range.start, hg.range.end)}
         </span>
       </li>

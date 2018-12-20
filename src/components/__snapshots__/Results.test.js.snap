@@ -5,20 +5,18 @@ exports[`Results should match snapshot 1`] = `
   <ul
     class="results"
   >
-    <li
-      data-testid="highlight-result"
-    >
+    <li>
       <span
         class="red"
+        data-testid="highlight-result"
       >
         this
       </span>
     </li>
-    <li
-      data-testid="highlight-result"
-    >
+    <li>
       <span
         class="red"
+        data-testid="highlight-result"
       >
         is
       </span>
