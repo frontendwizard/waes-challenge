@@ -1,3 +1,3 @@
 module.exports = {
-  setupTestFrameworkScriptFile: require.resolve('./jest.setup.js'),
+  setupTestFrameworkScriptFile: require.resolve("./jest.setup.js"),
 }

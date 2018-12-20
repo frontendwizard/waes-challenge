@@ -25,6 +25,6 @@
   ],
   "devDependencies": {
     "jest-dom": "^3.0.0",
-    "react-testing-library": "^5.4.0"
+    "react-testing-library": "^5.4.1"
   }
 }
