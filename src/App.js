@@ -1,5 +1,5 @@
 import React, { useReducer } from "react"
-import { reducer, initialState } from "./reducer"
+import { reducer, initialState } from "./store/reducer"
 // Components
 import Highlightable from "./components/Highlightable"
 import Selectors from "./components/Selectors"
@@ -12,7 +12,7 @@ import { getStringDiffLength, findChangePosition } from "./utils"
 const App = () => {
   // redux store
   const [state, dispatch] = useReducer(reducer, initialState)
-  // if change is made in the middle of the text, update highlights to follow
+  // if change is made in the middle of tbe text, update highlights to follow
   // up on the changes and update the text
   const onChange = text => {
     // find out how a string has changed
@@ -41,7 +41,6 @@ const App = () => {
         removeHighlight={payload =>
           dispatch({ type: "removeHighlight", payload })
         }
-        nextId={state.nextId}
         color={state.highlightColor}
         text={state.text}
         onTextChange={onChange}
