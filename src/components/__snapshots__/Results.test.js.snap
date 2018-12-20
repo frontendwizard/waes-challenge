@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results should match snapshot 1`] = `
+<DocumentFragment>
+  <ul
+    class="results"
+  >
+    <li
+      data-testid="highlight-result"
+    >
+      <span
+        class="red"
+      >
+        this
+      </span>
+    </li>
+    <li
+      data-testid="highlight-result"
+    >
+      <span
+        class="red"
+      >
+        is
+      </span>
+    </li>
+  </ul>
+</DocumentFragment>
+`;
