@@ -9,15 +9,14 @@ const Highlightable = ({
   text,
   onTextChange,
 }) => {
-  // ref to text and to highlight div to control scrolling
   const textRef = useRef(null)
   const highlightsRef = useRef(null)
-  // sync scroll from textarea and highlights div
+
   const onScroll = e => {
     e.persist()
     highlightsRef.current.scrollTop = e.target.scrollTop
   }
-  // listen to mouse up to get selections made with mouse
+
   const onMouseUp = e => {
     e.persist()
     const start = textRef.current.selectionStart
@@ -38,15 +37,13 @@ const Highlightable = ({
       )
         removeHighlight(highlight.id)
     })
-    // create new highlight
     addHighlight({
       range: { start, end },
       color,
     })
   }
-  // parse highlights to add span tags between highlights for the
-  // background div
-  const getHighlights = () => {
+
+  const parseHighlights = () => {
     let extraMarkupChars = 0
     return highlights.reduce((acc, selection) => {
       const highlight =
@@ -80,7 +77,7 @@ const Highlightable = ({
         ref={highlightsRef}
         className="highlight text"
         dangerouslySetInnerHTML={{
-          __html: getHighlights(text),
+          __html: parseHighlights(text),
         }}
       />
     </div>
