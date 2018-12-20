@@ -1,8 +1,8 @@
 export const initialState = {
   nextId: 0,
-  colors: ["cff0000", "c00ff00", "c0000ff"],
-  highlightColor: "cff0000",
-  viewColor: "cff0000",
+  colors: ["red", "green", "blue"],
+  highlightColor: "red",
+  viewColor: "red",
   highlights: [],
   text:
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially",
@@ -14,9 +14,8 @@ export const reducer = (state, action) => {
       return { ...state, highlightColor: action.payload }
     case "setViewColor":
       return { ...state, viewColor: action.payload }
-    case "setColorFilter":
-      return { ...state, viewColor: action.payload }
     case "addHighlight":
+      action.payload.id = state.nextId
       return {
         ...state,
         nextId: state.nextId + 1,
