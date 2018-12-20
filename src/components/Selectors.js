@@ -8,6 +8,7 @@ const Selectors = ({ colors, onColorClick }) => (
         key={color}
         className={color}
         onClick={() => onColorClick(color)}
+        data-testid={`${color}-button`}
       />
     ))}
   </div>

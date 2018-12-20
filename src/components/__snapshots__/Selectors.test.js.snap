@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selectors should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="selectors"
+  >
+    <button
+      class="red"
+      data-testid="red-button"
+    />
+    <button
+      class="blue"
+      data-testid="blue-button"
+    />
+    <button
+      class="green"
+      data-testid="green-button"
+    />
+  </div>
+</DocumentFragment>
+`;
